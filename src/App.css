@@ -4,9 +4,11 @@ body {
 
 .filterBox {
   margin: 10px;
-  /* background-color: red; */
+  margin-left: 0px;
   display: flex;
   justify-content: space-between;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 /* category desing */
@@ -17,7 +19,6 @@ body {
   position: sticky;
   top: 0;
   height: 92vh;
-  /* overflow-y: auto; */
 }
 
 .category-child {
@@ -25,7 +26,14 @@ body {
   background-color: #f3f3f3;
   overflow-y: auto;
   height: 70vh;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc #f3f3f3;
 }
+*/ .category-child::-webkit-scrollbar-thumb {
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
 .cateogry-heading {
   text-align: center;
   margin: 30px 0 30px 0;
@@ -82,13 +90,6 @@ body {
   font-size: 12px;
 }
 
-/* alphabet filter */
-
-/* .alphapet-container {
-  display: flex;
-  gap: 10px;
-} */
-
 .lb-sort-stores {
   margin-top: 20px;
 }
@@ -122,13 +123,6 @@ body {
   width: 100%;
 }
 
-/* .category-sidebar {
-
-  height: 90vh;
-} */
-
-/* input design */
-
 .form-control {
   display: block;
   width: 100%;
@@ -148,7 +142,6 @@ body {
 }
 .form-select {
   display: block;
-  /* width: 100%; */
   padding: 0.375rem 2.25rem 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
@@ -164,4 +157,11 @@ body {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+label {
+  display: flex;
+  justify-content: center;
+  height: 28px;
+  align-items: center;
+  margin-right: 31px;
 }
