@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## Project Overview
 
 The task involves developing a web application that allows users to browse through a list of stores categorized by various parameters. Users should be able to filter, sort, and search for stores based on different criteria. Additionally, they should have the ability to bookmark their favorite stores, with these preferences stored locally and reflected in the UI.
@@ -147,3 +148,6 @@ Candidates will be evaluated based on the following criteria:
 ## Conclusion
 
 We're thrilled to witness your skills in action as you tackle this project. Your dedication and creativity will play a vital role in crafting a seamless user experience. Best of luck, and we're excited to see your contributions!
+=======
+# task
+>>>>>>> origin/main
