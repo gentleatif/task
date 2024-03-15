@@ -32,12 +32,12 @@ const AllStores = ({
         params: { ...selectedFilters, _page: page, _limit: 20 },
       });
       setStores(response.data);
-      if (response.data.length === 0) {
-        setHasMore(false);
-      } else {
-        setStores((prevStores) => [...prevStores, ...response.data]);
-        setPage((prevPage) => prevPage + 1);
-      }
+      // if (response.data.length === 0) {
+      //   setHasMore(false);
+      // } else {
+      //   setStores((prevStores) => [...prevStores, ...response.data]);
+      //   setPage((prevPage) => prevPage + 1);
+      // }
     } catch (error) {
       console.error('Error fetching stores:', error);
     }
