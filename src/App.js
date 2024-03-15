@@ -1,6 +1,7 @@
 import { Fragment, useState, useEffect } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { useSearchParams } from 'react-router-dom';
 import Categories from './Components/Categories';
 import AllStores from './Components/AllStores';
 import axios from 'axios';
@@ -21,15 +22,26 @@ function classNames(...classes) {
 
 export default function App() {
   const [categories, setCategories] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  // const [selectedFilters, setSelectedFilters] = useState({
+  //   cats: '',
+  //   cashback_enabled: 0,
+  //   is_promoted: 0,
+  //   is_shareable: 0,
+  //   status: '',
+  //   name_like: '',
+  //   _sort: '',
+  //   _order: 'desc',
+  // });
   const [selectedFilters, setSelectedFilters] = useState({
-    cats: '',
-    cashback_enabled: 0,
-    is_promoted: 0,
-    is_shareable: 0,
-    status: '',
-    name_like: '',
-    _sort: '',
-    _order: 'desc',
+    cats: searchParams.get('cats') || '',
+    cashback_enabled: Number(searchParams.get('cashback_enabled')) || 0,
+    is_promoted: Number(searchParams.get('is_promoted')) || 0,
+    is_shareable: Number(searchParams.get('is_shareable')) || 0,
+    status: searchParams.get('status') || '',
+    name_like: searchParams.get('name_like') || '',
+    _sort: searchParams.get('_sort') || '',
+    _order: searchParams.get('_order') || 'desc',
   });
 
   const [categoryName, setCategoryName] = useState('All');
@@ -46,10 +58,27 @@ export default function App() {
       });
   }, []);
 
+  // const handleFilterChange = (filter, value) => {
+  //   setSelectedFilters({
+  //     ...selectedFilters,
+  //     [filter]: value,
+  //   });
+  // };
+
   const handleFilterChange = (filter, value) => {
-    setSelectedFilters({
-      ...selectedFilters,
+    setSelectedFilters((prevFilters) => ({
+      ...prevFilters,
       [filter]: value,
+    }));
+
+    setSearchParams((prevParams) => {
+      const newParams = new URLSearchParams(prevParams);
+      if (value === '' || value === 0) {
+        newParams.delete(filter);
+      } else {
+        newParams.set(filter, value);
+      }
+      return newParams;
     });
   };
   const handleCategoryChange = (name) => {

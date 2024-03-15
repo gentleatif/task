@@ -15,8 +15,10 @@ const AllStores = ({
   const [stores, setStores] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(1);
-  const [status, setStatus] = useState('');
-  const [search, setSearch] = useState('');
+  const [status, setStatus] = useState(selectedFilters.status);
+  const [search, setSearch] = useState(
+    !selectedFilters.name_like?.includes('^') ? selectedFilters.name_like : ''
+  );
   const [likedStores, setLikedStores] = useState([]);
 
   const [cashbackValue, setCashbackChecked] = useState(
@@ -54,12 +56,12 @@ const AllStores = ({
   function alphabetFilerSelected() {
     setSearch('');
     onFilterChange('name_like', search);
-
-    console.log('search filter called');
+    console.log('search filter called', 'name_like', search);
   }
 
-  function handleSearch() {
-    onFilterChange('name_like', search);
+  function handleSearch(s) {
+    console.log('seawrch', s);
+    onFilterChange('name_like', s);
   }
 
   const handleSortChange = (key, value) => {
@@ -150,7 +152,7 @@ const AllStores = ({
             value={search}
             onChange={(e) => {
               setSearch(e.target.value);
-              handleSearch();
+              handleSearch(e.target.value);
             }}
           />
         </div>
@@ -224,12 +226,12 @@ const AllStores = ({
       />
 
       {/* <InfiniteScroll
-        dataLength={stores.length}
-        next={fetchData}
-        hasMore={hasMore}
-        loader={<h4>Loading...</h4>}
-        scrollThreshold='100px'
-      > */}
+          dataLength={stores.length}
+          next={fetchData}
+          hasMore={hasMore}
+          loader={<h4>Loading...</h4>}
+          scrollThreshold='100px'
+        > */}
       <div className='store-parent'>
         {stores.map((store, index) => {
           return (

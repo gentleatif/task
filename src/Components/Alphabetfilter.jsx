@@ -6,27 +6,38 @@ const Alphabetfilter = ({
   alphabetFilerSelected,
 }) => {
   const alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-  const [selectedAlphabet, setSelectedAlphabet] = useState('');
+  const [selectedAlphabet, setSelectedAlphabet] = useState(
+    selectedFilter.name_like?.startsWith('^') ? selectedFilter.name_like : ''
+  );
 
   const handleClick = (alphabet) => {
     alphabetFilerSelected();
-    setSelectedAlphabet(alphabet === selectedAlphabet ? '' : alphabet);
-    alphabet
-      ? onFilterChange('name_like', `^${alphabet}`)
-      : onFilterChange('name_like', '');
+    const newAlphabet =
+      selectedAlphabet === alphabet ? '' : alphabet === '' ? '' : alphabet;
+    setSelectedAlphabet(newAlphabet);
+    onFilterChange('name_like', newAlphabet ? `^${newAlphabet}` : '');
   };
+
+  console.log(
+    'start ',
+    !selectedAlphabet || !selectedFilter.name_like?.startsWith('^'),
+    selectedFilter
+  );
 
   return (
     <div className='lb-sort-stores me-auto'>
       <ul>
         <li
           className={`pointer ${
-            !selectedFilter.name_like?.startsWith('^') ? 'active' : ''
+            !selectedAlphabet || !selectedFilter.name_like?.startsWith('^')
+              ? 'active'
+              : ''
           }`}
           onClick={() => handleClick('')}
         >
           All
         </li>
+
         {alphabets.map((alphabet) => (
           <li
             key={alphabet}
