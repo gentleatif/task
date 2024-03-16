@@ -18,12 +18,6 @@ const Alphabetfilter = ({
     onFilterChange('name_like', newAlphabet ? `^${newAlphabet}` : '');
   };
 
-  console.log(
-    'start ',
-    !selectedAlphabet || !selectedFilter.name_like?.startsWith('^'),
-    selectedFilter
-  );
-
   return (
     <div className='lb-sort-stores me-auto'>
       <ul>

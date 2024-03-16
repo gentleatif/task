@@ -23,16 +23,7 @@ function classNames(...classes) {
 export default function App() {
   const [categories, setCategories] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  // const [selectedFilters, setSelectedFilters] = useState({
-  //   cats: '',
-  //   cashback_enabled: 0,
-  //   is_promoted: 0,
-  //   is_shareable: 0,
-  //   status: '',
-  //   name_like: '',
-  //   _sort: '',
-  //   _order: 'desc',
-  // });
+
   const [selectedFilters, setSelectedFilters] = useState({
     cats: searchParams.get('cats') || '',
     cashback_enabled: Number(searchParams.get('cashback_enabled')) || 0,
@@ -47,7 +38,6 @@ export default function App() {
   const [categoryName, setCategoryName] = useState('All');
 
   useEffect(() => {
-    // Fetch categories data
     axios
       .get('http://localhost:3001/categories')
       .then((response) => {
@@ -57,13 +47,6 @@ export default function App() {
         console.error('Error fetching categories:', error);
       });
   }, []);
-
-  // const handleFilterChange = (filter, value) => {
-  //   setSelectedFilters({
-  //     ...selectedFilters,
-  //     [filter]: value,
-  //   });
-  // };
 
   const handleFilterChange = (filter, value) => {
     setSelectedFilters((prevFilters) => ({

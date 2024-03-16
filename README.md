@@ -1,75 +1,77 @@
 <<<<<<< HEAD
+
 ## Project Overview
 
 The task involves developing a web application that allows users to browse through a list of stores categorized by various parameters. Users should be able to filter, sort, and search for stores based on different criteria. Additionally, they should have the ability to bookmark their favorite stores, with these preferences stored locally and reflected in the UI.
 
 ## Github Repo:
-https://github.com/enacton-tech/react-intermediate
+
+https://github.com/gentleatif/task.git
 
 ### Video Explanation
-https://app.usebubbles.com/iHAEumYaUzLzDQzhTkrWw9/untitled
 
-### Setting Up the Project
+I have shared explanation of this task into the mail of hr
 
-To set up the project locally, follow these steps:
+## Important Note :-
 
-1. Clone the repository and navigate to the project folder.
-2. Run `npm install`.
-3. Start the project using `npm run start`.
-4. Access the React website at http://localhost:3000 and the API at http://localhost:3001.
-
-### API Consumption
+I have completed all the below task .
 
 #### Store List API:
-- **Get List of Stores**: Retrieve a list of stores. 
-   Example: http://localhost:3001/stores
+
+- **Get List of Stores**: Retrieve a list of stores.
+  Example: http://localhost:3001/stores
 
 #### Category List API:
-- **Get List of Categories**: Retrieve a list of categories. 
-   Example: http://localhost:3001/categories
+
+- **Get List of Categories**: Retrieve a list of categories.
+  Example: http://localhost:3001/categories
 
 #### Store Filter:
-- **cats**: Filter stores by category. 
-   Example: http://localhost:3001/stores?cats=1
 
-- **cashback_enabled**: Filter stores with cashback enabled. 
-   Example: http://localhost:3001/stores?cashback_enabled=1
+- **cats**: Filter stores by category.
+  Example: http://localhost:3001/stores?cats=1
 
-- **is_promoted**: Filter stores that are promoted. 
-   Example: http://localhost:3001/stores?is_promoted=1
+- **cashback_enabled**: Filter stores with cashback enabled.
+  Example: http://localhost:3001/stores?cashback_enabled=1
 
-- **is_sharable**: Filter stores that allow sharing. 
-   Example: http://localhost:3001/stores?is_sharable=1
+- **is_promoted**: Filter stores that are promoted.
+  Example: http://localhost:3001/stores?is_promoted=1
 
-- **status**: Filter stores by status (publish|draft|trash). 
-   Example: http://localhost:3001/stores?status=draft
+- **is_sharable**: Filter stores that allow sharing.
+  Example: http://localhost:3001/stores?is_sharable=1
 
-- **alphabet**: Filter stores by starting alphabet character. 
-   Example: http://localhost:3001/stores?name_like=^a
+- **status**: Filter stores by status (publish|draft|trash).
+  Example: http://localhost:3001/stores?status=draft
 
-- **multiple filters**: Filter stores using multiple criteria. 
-   Example: http://localhost:3001/stores?name_like=^a&cashback_enabled=1&status=publish
+- **alphabet**: Filter stores by starting alphabet character.
+  Example: http://localhost:3001/stores?name_like=^a
+
+- **multiple filters**: Filter stores using multiple criteria.
+  Example: http://localhost:3001/stores?name_like=^a&cashback_enabled=1&status=publish
 
 #### Search:
-- **store search by name**: Search stores by name. 
-   Example: http://localhost:3001/stores?name_like=ali
+
+- **store search by name**: Search stores by name.
+  Example: http://localhost:3001/stores?name_like=ali
 
 #### Store Sort:
-- **name**: Sort stores by name. 
-   Example: http://localhost:3001/stores?_sort=name
 
-- **featured**: Sort stores by featured status in descending order. 
-   Example: http://localhost:3001/stores?_sort=featured&order=desc
+- **name**: Sort stores by name.
+  Example: http://localhost:3001/stores?\_sort=name
 
-- **popularity**: Sort stores by popularity based on clicks in descending order. 
-   Example: http://localhost:3001/stores?_sort=clicks&_order=desc
+- **featured**: Sort stores by featured status in descending order.
+  Example: http://localhost:3001/stores?\_sort=featured&order=desc
 
-- **cashback**: Sort stores by cashback amount. 
-   Example: http://localhost:3001/stores?_sort=amount_type,cashback_amount&_order=asc,desc
+- **popularity**: Sort stores by popularity based on clicks in descending order.
+  Example: http://localhost:3001/stores?\_sort=clicks&\_order=desc
+
+- **cashback**: Sort stores by cashback amount.
+  Example: http://localhost:3001/stores?\_sort=amount_type,cashback_amount&\_order=asc,desc
 
 #### Pagination:
-- Paginate the results with page number and limit parameters. 
-   Example: http://localhost:3001/stores?_page=1&_limit=20
+
+- Paginate the results with page number and limit parameters.
+  Example: http://localhost:3001/stores?\_page=1&\_limit=20
 
 For more information, refer to the [JSON Server Documentation](https://github.com/typicode/json-server/tree/v0?tab=readme-ov-file).
 
@@ -81,7 +83,7 @@ For more information, refer to the [JSON Server Documentation](https://github.co
 
 3. **Main Section**: Show a paginated list of stores in the main section, loading only the first page initially.
 
-4. **Infinite Scroll**: Implement infinite scroll to load more stores dynamically as the user scrolls, similar to Instagram feeds.
+4. **Infinite Scroll**: Its not completed in the task.
 
 5. **Category Filter**: Filter stores based on the selected category and highlight the selected category in the sidebar.
 
@@ -100,6 +102,7 @@ For more information, refer to the [JSON Server Documentation](https://github.co
 - **Store Logo and Name**: Render the store card with the store logo centered followed by its name.
 
 - **Cashback Display Logic**:
+
   - If `cashback_enabled` is `0`, display "No cashback available".
   - If `cashback_enabled` is `1`, construct the cashback string as follows:
     - Start with the `rate_type` attribute, which can be either "upto" or "flat".
@@ -133,21 +136,3 @@ For more information, refer to the [JSON Server Documentation](https://github.co
 3. **Setup Instructions**: Include clear instructions on how to set up and run the project.
 
 4. **Application Demo**: Record a video demonstrating the application's functionality.
-
-### Evaluation Criteria
-
-Candidates will be evaluated based on the following criteria:
-
-1. **Functionality**: Does the application meet all specified requirements?
-2. **Code Quality**: Is the code well-structured, readable, and maintainable?
-3. **Documentation**: Is the codebase well-documented with clear instructions?
-4. **User Experience**: Does the application provide a smooth and intuitive user experience?
-5. **Technical Proficiency**: How effectively does the candidate utilize relevant technologies and APIs?
-6. **Delivery Quality**: Does the candidate deliver all expected deliverables with high quality?
-
-## Conclusion
-
-We're thrilled to witness your skills in action as you tackle this project. Your dedication and creativity will play a vital role in crafting a seamless user experience. Best of luck, and we're excited to see your contributions!
-=======
-# task
->>>>>>> origin/main

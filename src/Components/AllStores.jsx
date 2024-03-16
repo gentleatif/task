@@ -20,7 +20,7 @@ const AllStores = ({
     !selectedFilters.name_like?.includes('^') ? selectedFilters.name_like : ''
   );
   const [likedStores, setLikedStores] = useState([]);
-
+  // filters
   const [cashbackValue, setCashbackChecked] = useState(
     selectedFilters.cashback_enabled
   );
@@ -46,23 +46,22 @@ const AllStores = ({
   };
 
   useEffect(() => {
-    console.log('call it when change');
     fetchData();
     const liked = JSON.parse(localStorage.getItem('likedStores') || '[]');
-    console.log('liked', liked);
     setLikedStores(liked);
   }, [selectedFilters]);
 
   function alphabetFilerSelected() {
     setSearch('');
     onFilterChange('name_like', search);
-    console.log('search filter called', 'name_like', search);
   }
 
+  // search
   function handleSearch(s) {
-    console.log('seawrch', s);
     onFilterChange('name_like', s);
   }
+
+  // sort
 
   const handleSortChange = (key, value) => {
     onFilterChange(key, value);
@@ -85,9 +84,8 @@ const AllStores = ({
     };
   }, [hasMore]);
 
+  // handling like unlink
   const handleLikeToggle = (key, storeId) => {
-    console.log(key, storeId);
-
     let newLikedStores;
     if (key === 'add') {
       newLikedStores = [...likedStores, storeId];
@@ -97,13 +95,13 @@ const AllStores = ({
       newLikedStores = likedStores.filter((id) => id !== storeId);
       setLikedStores(newLikedStores);
     }
-    console.log(newLikedStores);
 
     localStorage.setItem('likedStores', JSON.stringify(newLikedStores));
   };
 
   const isStoreLiked = (storeId) => likedStores.includes(storeId);
 
+  // creating string for cashback display
   const getCashbackDisplay = (store) => {
     if (store.cashback_enabled === 0) {
       return 'No cashback available';
@@ -122,8 +120,9 @@ const AllStores = ({
   return (
     <div className={`my-[50px] ${className}`}>
       <div>Category : {categoryName}</div>
-
+      {/* filter and search  */}
       <div className='filterBox'>
+        {/* status  */}
         <div>
           <select
             className='form-select'
@@ -169,6 +168,7 @@ const AllStores = ({
           <option value='clicks'>Popularity</option>
           <option value='cashback_amount'>Cashback</option>
         </select>
+        {/* order of sorting */}
         <select
           className='form-select'
           value={selectedFilters._order}
@@ -179,9 +179,8 @@ const AllStores = ({
         </select>
       </div>
 
-      {/* checkbox div */}
       <div className='checkbox-parent'>
-        {/* Check boxes */}
+        {/* Check boxes filter */}
         <Checkbox
           label='Cashback Enabled'
           value={cashbackValue}
@@ -269,9 +268,6 @@ const AllStores = ({
               </div>
 
               <span className='cashback'>{getCashbackDisplay(store)}</span>
-              {/* <button>Shop Now</button> */}
-
-              {/* Add more store details as needed */}
             </div>
           );
         })}
